@@ -11,9 +11,5 @@ const router = new Router();
 router.post('/registration', usernameAndPasswordValidation, authController.registration)
 router.post('/login', authController.login)
 router.get('/users', roleMiddleware(["ADMIN"]), authController.getUsers)
-router.get('/ts', async (req, res) => {
-    const role = await Role.find({ value: "ADMIN" })
-    console.log(role, "ROLE");
-})
 
 export { router }
